@@ -1,0 +1,161 @@
+
+.mainNav {
+    background-color: #e5eecc;
+    text-align: center;
+    padding: 10px;
+    border: solid 1px #c3c3c3;
+}
+
+
+/*This is the pale gray div that the cards appear in*/
+.sortable-task-list {
+    background-color: whitesmoke;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: block;
+    margin-top: 5px;
+    padding: 0px;
+    z-index: 0px;                       /*z-index is its position in the layers. Higher z-indexes appear on top of lower ones*/
+    min-height: 60px;                   /*minimal height to ensure cards could be added to an empty list*/
+}
+
+/*These are the cards*/
+.taskCard {
+    color: #3A3A4D;
+    font-weight: normal;
+    font-size: 1em;
+    display: block;
+    position: relative;
+    background-color: darkseagreen;
+    width: 100%;
+    height:60px;
+    margin-bottom: 7px;             /*create a margin between cards*/
+    text-align: center;
+    padding: 0px;
+}
+
+.dayColumn {
+    margin-right: 3%;
+    margin-left: 3%;
+}
+
+/*===================================================================================================================*/
+/*MODAL WINDOWS*/
+/*===================================================================================================================*/
+
+/*This is the greyed-out background behind the modal window. It covers the whole screen*/
+.modal-bg{
+    display: none;
+    position:fixed;
+    left:0;right:0;
+    top:0;bottom:0;
+    z-index:0;
+    background-color:rgba(50,50,50,0.5);
+}
+
+/*This is the modal window itself*/
+.modal{
+    position:absolute;
+    background-color:#F5F5F6;
+    display: none;
+    top:35%;
+    left:50%;
+    z-index: 1;
+    width:340px;
+    height:500px;
+    margin-top:-130px;
+    margin-left:-170px;
+    box-shadow:0 0 10px 0 rgba(0,0,0,0.3);
+}
+
+/*The span div inside the modal is the coloured bar along the top with the title & the Close button*/
+.modal span{
+    display: block;
+    background: darkseagreen;
+    padding: 10px;
+    color:#fff;
+}
+
+/*This is the close(x) button*/
+.closeX{
+    color:#fff;
+    float: right;
+    font-size: 15px;
+}
+
+form{
+    display:block;
+    margin:30px;
+}
+form *{
+    margin:10px;
+}
+input:focus{
+    border:2px solid darkseagreen;
+    outline:0;
+}
+input{
+    width:240px;
+    padding:7px;
+    border:2px solid #ccc ;
+    border-radius:3px;
+}
+
+/*===============================================================================================*/
+/*TESTING LAYERS */
+/*===============================================================================================*/
+
+#testListDiv{
+    background-color: cadetblue;
+    height: 500px;
+    width: 500px;
+    position: absolute;
+    z-index: 2;
+    right: 0px;
+    top: 0px;
+    display:none;
+    box-shadow:0 0 10px 0 rgba(0,0,0,0.3);
+}
+
+
+/*===============================================================================================*/
+/*SEVEN COLUMN GRID / */
+/*===============================================================================================*/
+
+/*The css below grid below is generated from http://www.responsivegridsystem.com*/
+/*It allows you to decide the number of columns you want in a row, and set the margin */
+/*you want to use, and then it generates the HTML and css to go with it. It's pretty cool!*/
+
+.section {
+    clear: both;
+    padding: 0px;
+    margin: 2%;
+}
+
+/*  COLUMN SETUP  */
+.col {
+    display: block;
+    float:left;
+    margin: 1% 0 1% 1.6%;
+}
+.col:first-child { margin-left: 0; }
+
+/*  GROUPING  */
+.group:before,
+.group:after { content:""; display:table; }
+.group:after { clear:both;}
+.group { zoom:1; /* For IE 6/7 */ }
+
+/*  GRID OF SEVEN  */
+
+.dayColumn {
+    width: 12.91%;
+}
+
+/*  GO FULL WIDTH BELOW 480 PIXELS */
+@media only screen and (max-width: 480px) {
+    .col {  margin: 1% 0 1% 0%; }
+    .dayColumn { width: 100%; }
+}
+

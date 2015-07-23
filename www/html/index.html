@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Study Buddy</title>
+
+  <link rel="stylesheet" type="text/css" href="../css/Bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/subjectsBottomPanel.css">
+  <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=RobotoDraft:regular,bold,italic,thin,light,bolditalic,black,medium&amp'>
+  <link rel='stylesheet prefetch' href='lang=en'>
+  <script src="../js/firebase2.2.7.js"></script>
+  <script src='../js/jquery.js'></script>
+  <script src="../js/Sortable.js"></script>
+  <script src="../js/data.js"></script>
+  <script src="../js/users.js"></script>
+  <script src="../js/subjects.js"></script>
+  <script src="../js/tasks.js"></script>
+  <script src='../js/TweenMax.js'></script>
+  <script src='../js/main.js'></script>
+
+</head>
+
+<body onload="preparePage()">
+
+  <div class="container-fluid">
+    <!-- Main navigation -->
+    <div class="row">
+      <button class="col-md-4 mainNav" id="profileButton">Profile</button>
+      <button class="col-md-4 mainNav" id="calendarButton">Calendar</button>
+      <button class="col-md-4 mainNav" id="subjectsButton">Subjects</button>
+    </div>
+  </div>
+
+  <!-- Profile page -->
+  <div id="profilePage">
+    <div>
+      Content for Profile page
+    </div>
+  </div>
+
+
+  <!--========================================================================================================-->
+  <!--CALENDAR PAGE-->
+  <!--========================================================================================================-->
+  <div id="calendarPage">
+
+    <div class="section group">
+      <div class="col dayColumn">
+        <h4>Monday</h4>
+        <button class="addTaskFromDate" onclick="openAddTaskDialog('2016-02-01', this);">Add Task</button>
+        <ul class="sortable-task-list dayList" id="2016-02-01">
+        </ul>
+      </div>
+
+      <div class="col dayColumn">
+        <h4>Tuesday</h4>
+        <button class="addTaskFromDate" onclick="openAddTaskDialog('2016-02-02', this);">Add Task</button>
+        <ul class="sortable-task-list dayList" id="2016-02-02">
+        </ul>
+      </div>
+
+      <div class="col dayColumn">
+        <h4>Wednesday</h4>
+        <button class="addTaskFromDate" onclick="openAddTaskDialog('2016-02-03', this);">Add Task</button>
+        <ul class="sortable-task-list dayList" id="2016-02-03">
+        </ul>
+      </div>
+
+      <div class="col dayColumn">
+        <h4>Thursday</h4>
+        <button class="addTaskFromDate" onclick="openAddTaskDialog('2016-02-04', this);">Add Task</button>
+        <ul class="sortable-task-list dayList" id="2016-02-04">
+        </ul>
+      </div>
+
+      <div class="col dayColumn">
+        <h4>Friday</h4>
+        <button class="addTaskFromDate" onclick="openAddTaskDialog('2016-02-05', this);">Add Task</button>
+        <ul class="sortable-task-list dayList" id="2016-02-05">
+        </ul>
+      </div>
+
+      <div class="col dayColumn">
+        <h4>Saturday</h4>
+        <button class="addTaskFromDate" onclick="openAddTaskDialog('2016-02-06', this);">Add Task</button>
+        <ul class="sortable-task-list dayList" id="2016-02-06">
+        </ul>
+      </div>
+
+      <div class="col dayColumn">
+        <h4>Sunday</h4>
+        <button class="addTaskFromDate" onclick="openAddTaskDialog('2016-02-07', this);">Add Task</button>
+        <ul class="sortable-task-list dayList" id="2016-02-07">
+        </ul>
+      </div>
+    </div>
+
+    <!--========================================================================================================-->
+    <!--SUBJECTS FOOTER-->
+    <!--========================================================================================================-->
+    <footer id="panelWrapper">
+      <div id="flip">Task manager</div>
+      <div id="subjectsPanel">
+        <div id="innerWrapper">
+          <div id="subjectsList">
+            <!--<button class="subject">Maths</button>-->
+            <!--<button class="subject">Maths</button>-->
+            <!--<button class="subject">Maths</button>-->
+            <!--<button class="subject">Maths</button>-->
+            <!--<button class="subject">Maths</button>-->
+            <!--<button class="subject">Maths</button>-->
+            <!--<button class="subject">Maths</button>-->
+            <!--<button class="subject">Maths</button>-->
+            <!--<button class="subject">Maths</button>-->
+            <!--<button class="subject">Maths</button>-->
+            <!--<button class="subject">Maths</button>-->
+            <!--<button class="subject">Maths</button>-->
+            <!--<button class="subject">Maths</button>-->
+          </div>
+          <div id="tasksDiv">
+            <div id="panelControls">
+
+            </div>
+            <div class="col dayColumn">
+              <ul class="sortable-task-list" id="tasksList">
+
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </footer>
+  </div>
+
+  <!--========================================================================================================-->
+  <!--SUBJECT PAGE-->
+  <!--========================================================================================================-->
+  <div id="subjectsPage">
+      <div class ="container" id="subjectsContainer">
+        <div class="row">
+          <div class="row" id="subjectsDiv">
+          </div>
+          <button onclick="openAddSubject();">Add a Subject</button>
+        </div>
+      </div>
+  </div>
+
+
+  <!--========================================================================================================-->
+  <!--ADD SUBJECT (MODAL WINDOW)-->
+  <!--========================================================================================================-->
+  <div id="subjectModalBG" class="modal-bg">
+    <div id="modalSubject" class="modal">
+      <span>New Subject<a href="#close" class="closeX" onclick="closeModalWindow();">&#215;</a></span>
+      <form>
+        <input id="subjectNameInput" class="inputField" name="subjectName" type="textbox" placeholder="Subject name here." required>
+        <input id="subjectColourInput" class="inputField" name="subjectColour" type="textbox" placeholder="Colour hexcode here." required>
+        <button name="submit" id="submitSubject" type="button" onclick="addSubject();">Add Subject</button>
+      </form>
+    </div>
+  </div>
+
+
+  <!--========================================================================================================-->
+  <!--ADD TASK DIALOG (MODAL WINDOW)-->
+  <!--========================================================================================================-->
+  <div id="addTaskModalBG" class="modal-bg">
+    <div id="addTaskModal" class="modal">
+      <span>
+        New Task
+        <a href="#close" class="closeX" onclick="closeModalWindow();">&#215;</a>
+      </span>
+      <form>
+        <select id ="subjectInput"></select>
+        <input id="titleInput" class="inputField" name="titleInput" type="textbox" placeholder="Write your task here." required>
+        <input id="descriptionInput" class="inputField" name="descriptionInput" type="textbox" placeholder="Write your description here." required>
+        <input id="timeEstimationInput" class="inputField" name="timeEstimationInput" type="textbox" placeholder="Write your time estimation here." required>
+        <input id="assignedDateInput" class="inputField" name="assignedDateInput" type="textbox" placeholder="Write task's assigned date here." required>
+        <button name="submit" id="submitNewTask" type="button">Add Task</button>
+      </form>
+    </div>
+  </div>
+
+
+  <!--========================================================================================================-->
+  <!--TASK DIALOG (MODAL WINDOW)-->
+  <!--========================================================================================================-->
+  <div id="taskModalBG" class="modal-bg">
+    <div id="taskModal" class="modal">
+      <span>
+        Your Task
+        <a href="#close" class="closeX" onclick="closeModalWindow();">&#215;</a>
+      </span>
+      <form>
+        <select id ="taskSubject"></select>
+        <input id="taskTitle" name="taskTitle" type="textbox" placeholder="Write your task here." required>
+        <input id="taskDescription" name="taskDescription" type="textbox" placeholder="Write your description here." required>
+        <input id="taskTimeEstimation" name="taskTimeEstimation" type="textbox" placeholder="Write your time estimation here." required>
+        <input id="taskAssignedDate" name="taskAssignedDate" type="textbox" placeholder="Write task's assigned date here." required>
+        <!--<button name="submit" id="submitNewTask" type="button">Add Task</button>-->
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>
+
+
+
+
+
+
